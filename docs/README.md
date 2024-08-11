@@ -35,7 +35,7 @@ func TestSayHello(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste SayHello](assests/test_sayhello.png)
+![Print do Teste SayHello](assests/test_sayhello.png) 
 
 ### 2. Teste da Função `OddOrEven`
 
