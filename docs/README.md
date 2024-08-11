@@ -35,7 +35,7 @@ func TestSayHello(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste SayHello](assests/test_sayhello.png) 
+![test_sayhello](https://github.com/user-attachments/assets/7a4b54d0-826d-4747-92de-2a07ee00b7fb)
 
 ### 2. Teste da Função `OddOrEven`
 
@@ -59,7 +59,7 @@ func TestOddOrEven(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste OddOrEven](assets/test_oddoreven.png)
+![test_oddoreven](https://github.com/user-attachments/assets/9d9c721a-16a5-4de5-b32f-78fe02f7a372)
 
 ### 3. Teste do Handler `CheckHealth`
 
@@ -88,16 +88,8 @@ func TestCheckHealth(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste CheckHealth](assets/test_checkhealth.png)
-
-## 📊 Análise dos Resultados
-
-A análise dos resultados dos testes deve ser incluída aqui. Verifique se todos os testes passaram e se o comportamento do código está conforme esperado. Qualquer falha deve ser identificada e corrigida.
+![test_checkhealth](https://github.com/user-attachments/assets/68544ebf-f52b-4d5f-8fb3-37e4b5b4e555)
 
 ## :memo: Conclusão
 
 Esta documentação fornece um resumo dos testes realizados e dos resultados obtidos. A inclusão dos prints ajuda a verificar visualmente o sucesso dos testes e a garantir a qualidade do código.
-
----
-
-Você pode preencher os espaços com os prints dos resultados dos testes, e ajustar qualquer parte da documentação conforme necessário. Se precisar de mais alguma coisa, é só avisar!
