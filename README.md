@@ -18,7 +18,7 @@ O objetivo é fornecer uma implementação prática do tutorial, demonstrando a 
 
 ### 1. Criação do Repositório no GitHub
 
-Um repositório foi criado para hospedar os códigos do tutorial. Acesse o repositório [aqui](https://github.com/ragazziluis/tdd-golang).
+Criamos este repositório para hospedar os códigos do tutorial aqui. Acesse o artigo fonte do tutotial [aqui](https://williaminfante.medium.com/golang-testing-with-tdd-e548d8be776).
 
 ### 2. Execução dos Exemplos e Documentação
 
