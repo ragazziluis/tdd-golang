@@ -59,7 +59,7 @@ func TestOddOrEven(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste OddOrEven](screenshots/test_oddoreven.png)
+![Print do Teste OddOrEven](assets/test_oddoreven.png)
 
 ### 3. Teste do Handler `CheckHealth`
 
@@ -88,7 +88,7 @@ func TestCheckHealth(t *testing.T) {
 
 #### Print dos Resultados
 
-![Print do Teste CheckHealth](screenshots/test_checkhealth.png)
+![Print do Teste CheckHealth](assets/test_checkhealth.png)
 
 ## 📊 Análise dos Resultados
 
