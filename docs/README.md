@@ -1,66 +1,103 @@
-# 🙋‍ Implementando TDD na Prática - 1 [Luis Miranda]
+# 📚 Documentação da Atividade Ponderada - Testes TDD em Go
 
-## :mag: Introdução:
+## :mag: Introdução
 
-Este repositório contém os códigos do tutorial "Golang Testing with TDD", que explica como aplicar o Desenvolvimento Orientado a Testes (TDD) em Go. O tutorial descreve o ciclo Red-Green-Refactor, destaca a importância dos testes unitários e de integração, e fornece exemplos de código em Go. Também enfatiza as melhores práticas para escrever testes eficazes e manter um design de código modular e testável.
+Este documento fornece uma visão geral detalhada dos testes realizados no projeto de TDD em Go. Ele inclui a execução dos testes, os resultados obtidos e a análise dos mesmos. 
 
-## :dart: O objetivo:
+## :dart: Objetivo
 
-O objetivo deste repositório é fornecer uma implementação prática do tutorial, incluindo a execução de cada exemplo, a documentação dos resultados e a ampliação dos comentários do código para explicar as técnicas e conceitos do TDD.
+O objetivo desta documentação é detalhar os testes realizados para garantir que o código esteja funcionando corretamente e para ilustrar a aplicação do Desenvolvimento Orientado a Testes (TDD).
 
-## :jigsaw: Estrutura do Repositório
+## :jigsaw: Estrutura do Projeto
 
-- `src/`: Diretório contendo os códigos fonte dos exemplos do tutorial.
-- `screenshots/`: Diretório contendo prints das execuções dos testes.
-- `README.md`: Este arquivo de documentação.
+- **`src/`**: Contém o código fonte e os testes do projeto.
+- **`assets/`**: Diretório reservado para prints das execuções dos testes.
 
-# Passos Realizados
+## 📋 Testes Executados
 
-## 1. Criação do Repositório no GitHub
+Abaixo estão os detalhes dos testes realizados, com os prints dos resultados.
 
-Foi criado um repositório no GitHub para hospedar os códigos do tutorial. Você pode acessar o repositório aqui.  
+### 1. Teste da Função `SayHello`
 
-## 2. Execução dos Exemplos e Documentação
+A função `SayHello` retorna uma mensagem de boas-vindas personalizada. O teste verifica se a mensagem gerada está correta para diferentes entradas.
 
-Todos os exemplos do tutorial foram executados, e os resultados foram documentados por meio de prints das execuções. Estes prints estão disponíveis no diretório `screenshots/`.
-
-### Exemplos Executados
-
-Cada exemplo do tutorial foi executado usando o comando `go test/`. Abaixo estão os prints das execuções:
-
-- Exemplo 1: Soma de dois números
-- Exemplo 2: Verificação de igualdade
-
-## 3. Ampliação dos Comentários do Código
-
-Os comentários nos códigos foram ampliados para explicar as técnicas e conceitos do TDD utilizados. Abaixo está um exemplo de como os comentários foram expandidos: 
+#### Código do Teste
 
 ```go
-package main
+func TestSayHello(t *testing.T) {
+    greeting := starter.SayHello("William")
+    assert.Equal(t, "Hello William. Welcome!", greeting)
 
-import (
-    "testing"
-)
-
-// Soma retorna a soma de dois inteiros.
-// Exemplo de uma função simples que vamos testar usando TDD.
-func Soma(a int, b int) int {
-    return a + b
+    anotherGreeting := starter.SayHello("asdf ghjkl")
+    assert.Equal(t, "Hello asdf ghjkl. Welcome!", anotherGreeting)
 }
-
-// TestSoma testa a função Soma.
-// No TDD, começamos escrevendo um teste que falha para definir o comportamento desejado.
-func TestSoma(t *testing.T) {
-    total := Soma(2, 3)
-    esperado := 5
-
-    if total != esperado {
-        t.Errorf("Resultado da soma é incorreto, obtido: %d, esperado: %d", total, esperado)
-    }
-}
-
 ```
 
-# Conclusão do Relatório
+#### Print dos Resultados
 
-Este repositório apresenta um guia prático sobre como aplicar TDD em Go, com exemplos executados e documentados, além de comentários expandidos para explicar as técnicas e conceitos do TDD. Seguindo este tutorial, você aprenderá a importância dos testes unitários e de integração, e como manter um design de código modular e testável. 
+![Print do Teste SayHello](assests/test_sayhello.png)
+
+### 2. Teste da Função `OddOrEven`
+
+A função `OddOrEven` verifica se um número é par ou ímpar. Os testes cobrem números positivos, negativos e zero.
+
+#### Código do Teste
+
+```go
+func TestOddOrEven(t *testing.T) {
+    t.Run("Check Non Negative Numbers", func(t *testing.T) {
+        assert.Equal(t, "45 is an odd number", starter.OddOrEven(45))
+        assert.Equal(t, "42 is an even number", starter.OddOrEven(42))
+        assert.Equal(t, "0 is an even number", starter.OddOrEven(0))
+    })
+    t.Run("Check Negative Numbers", func(t *testing.T) {
+        assert.Equal(t, "-45 is an odd number", starter.OddOrEven(-45))
+        assert.Equal(t, "-42 is an even number", starter.OddOrEven(-42))
+    })
+}
+```
+
+#### Print dos Resultados
+
+![Print do Teste OddOrEven](screenshots/test_oddoreven.png)
+
+### 3. Teste do Handler `CheckHealth`
+
+O handler `CheckHealth` verifica o status de saúde do servidor. O teste assegura que o status HTTP e a resposta estejam corretos.
+
+#### Código do Teste
+
+```go
+func TestCheckHealth(t *testing.T) {
+    t.Run("Check health status", func(t *testing.T) {
+        req := httptest.NewRequest("GET", "http://mysite.com/example", nil)
+        writer := httptest.NewRecorder()
+        starter.CheckHealth(writer, req)
+        response := writer.Result()
+        body, err := io.ReadAll(response.Body)
+
+        assert.Equal(t, "health check passed", string(body))
+        assert.Equal(t, 200, response.StatusCode)
+        assert.Equal(t,
+            "text/plain; charset=utf-8",
+            response.Header.Get("Content-Type"))
+        assert.Equal(t, nil, err)
+    })
+}
+```
+
+#### Print dos Resultados
+
+![Print do Teste CheckHealth](screenshots/test_checkhealth.png)
+
+## 📊 Análise dos Resultados
+
+A análise dos resultados dos testes deve ser incluída aqui. Verifique se todos os testes passaram e se o comportamento do código está conforme esperado. Qualquer falha deve ser identificada e corrigida.
+
+## :memo: Conclusão
+
+Esta documentação fornece um resumo dos testes realizados e dos resultados obtidos. A inclusão dos prints ajuda a verificar visualmente o sucesso dos testes e a garantir a qualidade do código.
+
+---
+
+Você pode preencher os espaços com os prints dos resultados dos testes, e ajustar qualquer parte da documentação conforme necessário. Se precisar de mais alguma coisa, é só avisar!
