@@ -14,6 +14,8 @@ O objetivo é fornecer uma implementação prática do tutorial, demonstrando a 
 - `assets/`: Contém prints das execuções dos testes.
 - `docs`: Arquivo de documentação.
 
+Obs: deixei um *easter egg* em `assets/` :) 
+
 ## Passos Realizados
 
 ### 1. Criação do Repositório no GitHub
